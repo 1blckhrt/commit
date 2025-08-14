@@ -1,17 +1,23 @@
 from enum import Enum
 
+class CommitType(str, Enum):
+    FEAT = "feat"
+    FIX = "fix"
+    CHORE = "chore"
+    DOCS = "docs"
+    REFACTOR = "refactor"
+    TEST = "test"
+    STYLE = "style"
 
-class CommitType(Enum):
-    FEAT = ("feat", "Introduces a new feature")
-    FIX = ("fix", "Bug fix")
-    CHORE = ("chore", "Maintenance tasks")
-    DOCS = ("docs", "Documentation changes")
-    REFACTOR = ("refactor", "Code refactoring")
-    TEST = ("test", "Adding or updating tests")
-    STYLE = ("style", "Code style changes")
-
-    def __init__(self, key, description):
-        self.key = key
-        self.description = description
-
-
+    @property
+    def description(self):
+        descriptions = {
+            CommitType.FEAT: "Introduces a new feature",
+            CommitType.FIX: "Bug fix",
+            CommitType.CHORE: "Maintenance tasks",
+            CommitType.DOCS: "Documentation changes",
+            CommitType.REFACTOR: "Code refactoring",
+            CommitType.TEST: "Adding or updating tests",
+            CommitType.STYLE: "Code style changes",
+        }
+        return descriptions[self]
