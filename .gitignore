@@ -177,3 +177,4 @@ pyrightconfig.json
 
 .ruff_cache
 .mypy_cache
+.ropeproject
