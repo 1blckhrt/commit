@@ -6,6 +6,7 @@ from helpers import get_commit_emoji
 import questionary
 import subprocess
 import argparse
+import sys
 
 from rich.console import Console
 from rich.table import Table
@@ -40,6 +41,15 @@ def main():
         console.print(table)
         return
 
+    result = subprocess.run(
+        ["git", "status", "--porcelain"], capture_output=True, text=True
+    )
+
+    git_status = result.stdout.strip()
+    if not git_status:
+        console.print("[yellow]No changes to commit. Exiting...[/yellow]")
+        sys.exit(0)
+
     commit_type = get_commit_type() or ""
     scope = get_scope() or ""
     description = get_description()
@@ -58,7 +68,7 @@ def main():
     )
 
     if questionary.confirm("Do you want to use this commit message?").ask():
-        subprocess.run(["git", "commit", "-m", commit_message])
+        subprocess.run(["git", "commit", "-am", commit_message])
         save_commit(commit_type, scope, description if description is not None else "")
         console.print(f"[green]Commit saved![/green] {emoji}")
     else:
