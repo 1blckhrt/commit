@@ -16,6 +16,7 @@ console = Console()
 
 
 def main():
+    """Main entry point."""
     create_database()
 
     parser = argparse.ArgumentParser(description="Generate a git commit message.")
@@ -41,6 +42,7 @@ def main():
         console.print(table)
         return
 
+    # exit early if no changes
     result = subprocess.run(
         ["git", "status", "--porcelain"], capture_output=True, text=True
     )

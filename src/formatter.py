@@ -1,6 +1,7 @@
 def format_commit_message(
     commit_type: str, scope: str | None, description: str | None
 ) -> str:
+    """Format the commit message."""
     parts = [commit_type]
     if scope:
         parts.append(f"({scope})")

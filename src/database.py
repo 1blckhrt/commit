@@ -6,6 +6,7 @@ db_path = pathlib.Path.home() / ".cc" / "commits.db"
 
 
 def create_database():
+    """Create the database and the commits table if they don't exist."""
     db_path.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(db_path)
     c = conn.cursor()
@@ -25,6 +26,7 @@ def create_database():
 
 
 def save_commit(commit_type: str, scope: str | None, description: str):
+    """Save a commit to the database."""
     conn = sqlite3.connect(db_path)
     c = conn.cursor()
     c.execute(
@@ -36,6 +38,7 @@ def save_commit(commit_type: str, scope: str | None, description: str):
 
 
 def get_commit_stats():
+    """Get commit statistics from the database."""
     conn = sqlite3.connect(db_path)
     c = conn.cursor()
     c.execute("SELECT type, COUNT(*) FROM commits GROUP BY type")
