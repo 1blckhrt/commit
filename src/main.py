@@ -1,8 +1,6 @@
-from constants import CommitType
-
-
 def main():
-    print("Hello from cc!")
+    # todo: implement argparse for stats db
+    print("")
 
 
 if __name__ == "__main__":
