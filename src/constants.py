@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class CommitType(str, Enum):
     FEAT = "feat"
     FIX = "fix"
