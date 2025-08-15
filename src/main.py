@@ -1,10 +1,12 @@
 from formatter import format_commit_message
 from prompts import get_commit_type, get_description, get_scope
+from database import create_database, save_commit, get_commit_stats
+from helpers import get_commit_emoji
+
 import questionary
 import subprocess
 import argparse
-from database import create_database, save_commit, get_commit_stats
-from helpers import get_commit_emoji
+
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
