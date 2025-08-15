@@ -1,7 +1,13 @@
+import sys
+
 import questionary
+
+from rich.console import Console
 
 from helpers import get_commit_emoji
 from constants import CommitType
+
+console = Console()
 
 choices = [
     {
@@ -12,10 +18,16 @@ choices = [
 ]
 
 
-def get_commit_type() -> str:
-    return questionary.select(
+def get_commit_type() -> str | None:
+    commit_type = questionary.select(
         "Select the type of change you want to commit:", choices=choices
     ).ask()
+
+    if commit_type is None:
+        console.print("\n[red]No commit type specified. Exiting immediately.[/red]")
+        sys.exit(0)
+
+    return commit_type
 
 
 def get_scope() -> str | None:
@@ -24,5 +36,8 @@ def get_scope() -> str | None:
 
 
 def get_description() -> str | None:
-    response = questionary.text("Enter a description of the change:").ask()
-    return response.strip() if response else None
+    description = questionary.text("Enter a description of the change:").ask()
+    if description is None:
+        console.print("\n[red]No description provided. Exiting immediately.[/red]")
+        sys.exit(0)
+    return description.strip()

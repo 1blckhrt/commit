@@ -11,7 +11,6 @@ from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
 
-
 console = Console()
 
 
@@ -41,8 +40,8 @@ def main():
         console.print(table)
         return
 
-    commit_type = get_commit_type()
-    scope = get_scope()
+    commit_type = get_commit_type() or ""
+    scope = get_scope() or ""
     description = get_description()
 
     commit_message = format_commit_message(commit_type, scope, description)
