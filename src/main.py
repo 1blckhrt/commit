@@ -54,7 +54,7 @@ def main():
 
     commit_type = get_commit_type() or ""
     scope = get_scope() or ""
-    description = get_description()
+    description = get_description() or ""
 
     commit_message = format_commit_message(commit_type, scope, description)
 
@@ -71,7 +71,7 @@ def main():
 
     if questionary.confirm("Do you want to use this commit message?").ask():
         subprocess.run(["git", "commit", "-am", commit_message])
-        save_commit(commit_type, scope, description if description is not None else "")
+        save_commit(commit_type, scope, description)
         console.print(f"[green]Commit saved![/green] {emoji}")
     else:
         console.print("[red]Commit message discarded.[/red]")
