@@ -1,9 +1,14 @@
 import questionary
 
+from helpers import get_commit_emoji
 from constants import CommitType
 
 choices = [
-    {"name": f"{ct.value} - {ct.description}", "value": ct.value} for ct in CommitType
+    {
+        "name": f"{get_commit_emoji(ct.value)} {ct.value} - {ct.description}",
+        "value": ct.value,
+    }
+    for ct in CommitType
 ]
 
 
