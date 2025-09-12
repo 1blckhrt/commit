@@ -1,6 +1,6 @@
-# cc - commit cli
+# commit cli
 
-`cc` is a CLI program used to manage your conventional commits.
+`commit` is a CLI program used to manage your conventional commits.
 
 ## Features
 
@@ -23,11 +23,13 @@ To view your statistics, run the following file with the `--stats` flag:
 src/main.py --stats
 ```
 
+Alternatively, you can use the flake provided.
+
 ## Installation
 
 1. Clone the repository
 2. Install the required dependencies (I recommend using `uv`)
-3. Alias the entry point to your shell (e.g., `alias cc="python path/to/cc/src/main.py"`)
+3. Alias the entry point to your shell (e.g., `alias commit="python path/to/coimmit/src/main.py"`)
 
 ## Contributing
 
