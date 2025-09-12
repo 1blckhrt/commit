@@ -29,7 +29,7 @@ Alternatively, you can use the flake provided.
 
 1. Clone the repository
 2. Install the required dependencies (I recommend using `uv`)
-3. Alias the entry point to your shell (e.g., `alias commit="python path/to/coimmit/src/main.py"`)
+3. Alias the entry point to your shell (e.g., `alias commit="python path/to/commit/src/main.py"`)
 
 ## Contributing
 
