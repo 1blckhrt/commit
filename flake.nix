@@ -1,5 +1,5 @@
 {
-  description = "A basic flake using pyproject.toml project metadata";
+  description = "Flake for commit";
 
   inputs = {
     pyproject-nix = {
