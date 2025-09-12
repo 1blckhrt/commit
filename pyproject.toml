@@ -1,5 +1,5 @@
 [project]
-name = "cc"
+name = "commit"
 version = "0.1.0"
 description = "Conventional commit cli"
 readme = "README.md"
@@ -8,3 +8,6 @@ dependencies = [
     "questionary>=2.1.0",
     "rich>=14.1.0",
 ]
+
+[project.scripts]
+commit = "commit.main:main"

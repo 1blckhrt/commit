@@ -1,4 +1,4 @@
-from constants import CommitType
+from commit.constants import CommitType
 
 
 def get_commit_emoji(commit_type):

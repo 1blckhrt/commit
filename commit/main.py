@@ -1,7 +1,7 @@
-from formatter import format_commit_message
-from prompts import get_commit_type, get_description, get_scope
-from database import create_database, save_commit, get_commit_stats
-from helpers import get_commit_emoji
+from commit.formatter import format_commit_message
+from commit.prompts import get_commit_type, get_description, get_scope
+from commit.database import create_database, save_commit, get_commit_stats
+from commit.helpers import get_commit_emoji
 
 import questionary
 import subprocess

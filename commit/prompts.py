@@ -1,8 +1,8 @@
 import sys
 import questionary
 
-from helpers import get_commit_emoji
-from constants import CommitType
+from commit.helpers import get_commit_emoji
+from commit.constants import CommitType
 
 from rich.console import Console
 
