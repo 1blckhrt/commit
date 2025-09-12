@@ -21,7 +21,7 @@
 
     pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
-    python = pkgs.python3;
+    python = pkgs.python313;
   in {
     packages.x86_64-linux.default = let
       attrs = project.renderers.buildPythonPackage {inherit python;};
