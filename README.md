@@ -13,7 +13,7 @@
 
 ## Usage
 
-To use `cc`, run the following file within the repository:
+To use `commit`, run the following file within the repository:
 ```bash
 src/main.py
 ```
