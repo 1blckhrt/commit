@@ -33,7 +33,9 @@ def get_commit_type() -> str | None:
 
 def get_scope() -> str | None:
     """Prompt the user to enter a scope for the change."""
-    response = questionary.text("Enter the scope of the change (optional):").ask()
+    response = questionary.text(
+        "Enter the scope of the change (optional, enter empty string to skip):"
+    ).ask()
     return response.strip() if response else None
 
 
