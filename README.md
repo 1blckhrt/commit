@@ -15,21 +15,77 @@
 
 To use `commit`, run the following file within the repository:
 ```bash
-src/main.py
+python3 -m commit.main
 ```
 
 To view your statistics, run the following file with the `--stats` flag:
 ```bash
-src/main.py --stats
+python3 -m commit.main --stats
 ```
 
-Alternatively, you can use the flake provided.
+Alternatively, you can use the flake provided and run it as a standalone CLI program. 
 
-## Installation
+## Python Installation
 
 1. Clone the repository
 2. Install the required dependencies (I recommend using `uv`)
 3. Alias the entry point to your shell (e.g., `alias commit="python path/to/commit/src/main.py"`)
+
+## Flake Installation
+
+```nix
+# flake.nix
+{
+  description = "Flake with commit";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+
+    commit = {
+      url = "github:1blckhrt/commit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = {
+    self,
+    nixpkgs,
+    commit,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    lib = nixpkgs.lib;
+    forAllSystems = lib.genAttrs [system];
+  in {
+    homeConfigurations = {
+      "blckhrt@laptop" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {inputs = {inherit self nixpkgs commit;};};
+        modules = [
+          ./home.nix
+          {
+            home.packages = [
+              commit.packages.${system}.default
+            ];
+          }
+        ];
+      };
+    };
+  };
+}
+
+# home.nix
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
+  home.packages = with pkgs; [
+    inputs.commit.packages.x86_64-linux.default
+  ];
+}
+```
 
 ## Contributing
 
