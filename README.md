@@ -29,7 +29,7 @@ Alternatively, you can use the flake provided and run it as a standalone CLI pro
 
 1. Clone the repository
 2. Install the required dependencies (I recommend using `uv`)
-3. Alias the entry point to your shell (e.g., `alias commit="python path/to/commit/src/main.py"`)
+3. Alias the entry point to your shell.
 
 ## Flake Installation
 
@@ -57,7 +57,8 @@ Alternatively, you can use the flake provided and run it as a standalone CLI pro
     forAllSystems = lib.genAttrs [system];
   in {
     homeConfigurations = {
-      "blckhrt@laptop" = home-manager.lib.homeManagerConfiguration {
+      # replace with your info
+      "user@host" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = {inputs = {inherit self nixpkgs commit;};};
         modules = [
@@ -85,6 +86,12 @@ Alternatively, you can use the flake provided and run it as a standalone CLI pro
     inputs.commit.packages.x86_64-linux.default
   ];
 }
+```
+
+You can also install it via the `nix profile install` command (**NOT** recommended), but do note that any bugs you may encounter with this tool or your system are **your** responsibility, not mine.
+
+```bash
+nix profile install github:1blckhrt/commit
 ```
 
 ## Contributing
