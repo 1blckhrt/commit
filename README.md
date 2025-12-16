@@ -38,7 +38,7 @@ Alternatively, you can use the flake provided and run it as a standalone CLI pro
 {
   description = "Flake with commit";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     commit = {
       url = "github:1blckhrt/commit";
