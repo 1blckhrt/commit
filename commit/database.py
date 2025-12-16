@@ -2,7 +2,7 @@ import sqlite3
 import datetime
 import pathlib
 
-db_path = pathlib.Path.home() / ".cc" / "commits.db"
+db_path = pathlib.Path.home() / ".commit" / "commits.db"
 
 
 def create_database():
