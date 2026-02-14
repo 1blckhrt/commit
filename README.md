@@ -1,5 +1,11 @@
 # commit cli
 
+> [!IMPORTANT]
+> This repository is no longer maintained on GitHub.
+> Please head over to the Codeberg repository for any issues, pull requests, or further changes to `commit`.
+>
+> [Codeberg - blckhrt/commit](https://codeberg.org/blckhrt/commit)
+
 `commit` is a CLI program used to manage your conventional commits.
 
 ## Features
